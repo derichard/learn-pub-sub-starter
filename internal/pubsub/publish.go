@@ -2,8 +2,8 @@ package pubsub
 
 import (
 	"context"
-	amqp "github.com/streadway/amqp"
-	"json"
+	amqp "github.com/rabbitmq/amqp091-go"
+	"encoding/json"
 	"fmt"
 )
 
@@ -19,5 +19,6 @@ func PublishJSON[T any](ch *amqp.Channel, exchange, key string, val T) error {
 	if err != nil {
 		fmt.Println("Error publishing message")
 	}
+	return err
 }
 
